@@ -6,7 +6,7 @@ const passport = require("passport")
 const axios = require("axios")
 const Router = require("./routes/routes")
 const app = express()
-const PORT = 4000
+const PORT = process.env.PORT || 4000
 
 // Se setea el puerto de el servidor
 app.set("port", PORT)
