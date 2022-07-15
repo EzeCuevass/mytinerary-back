@@ -3,7 +3,7 @@ const bcryptjs = require("bcryptjs")
 const crypto = require("crypto")
 const sendEmail = require("./sendEmail")
 const jwt = require("jsonwebtoken")
-
+ 
 const userControllers = {
     signUpUsers: async (req, res) => {
         let {fullname, email, password, country, photo, from} = req.body.userData

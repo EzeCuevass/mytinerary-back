@@ -1,5 +1,5 @@
 const Cities = require("../models/model")
-
+ 
 const citiesControllers = {
     getCities: async (req, res)=>{
         let cities 

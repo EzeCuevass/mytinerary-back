@@ -21,4 +21,4 @@ app.use("/api", Router)
 // Escucha al puerto, y manda un mensaje en la consola indicanto el puerto en el que se esta trabajando
 app.listen(PORT, ()=>{
     console.log("Servidor corriendo en puerto: " + app.get("port"))
-})
+}) 

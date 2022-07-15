@@ -1,5 +1,5 @@
 const Itineraries = require('../models/modelItineraries')
-
+ 
 const commentsControllers = {
     addComment: async (req, res) => {
         const  {itineraryId} = req.body.comment 

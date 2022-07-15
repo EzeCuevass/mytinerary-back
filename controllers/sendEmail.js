@@ -30,7 +30,7 @@ const sendEmail = async (email, uniqueString) => {
         tls: {
             rejectUnauthorized: false
         }
-    })
+    }) 
 
     let mailOptions = {
         from: process.env.USER,

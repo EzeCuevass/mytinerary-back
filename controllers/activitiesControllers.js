@@ -1,5 +1,5 @@
 const Activities = require("../models/modelActivities")
-
+ 
 const activitiesControllers = {
     getActivities: async (req, res)=>{
         let activities

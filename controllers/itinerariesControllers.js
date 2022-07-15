@@ -1,5 +1,5 @@
 const Itineraries = require("../models/modelItineraries");
-
+ 
 const itinerariesControllers = {
     getItineraries: async (req, res)=>{
         let itineraries 

@@ -6,4 +6,4 @@ const citiesSchema = new mongoose.Schema({
     photo:{type:String, required:true}
 })
 const Cities = mongoose.model("cities", citiesSchema)
-module.exports = Cities 
+module.exports = Cities  
