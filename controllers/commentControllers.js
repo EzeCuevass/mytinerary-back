@@ -10,6 +10,7 @@ const commentsControllers = {
         try {
         const newComment = await Itineraries.findOneAndUpdate({ _id: itineraryId }, 
             { $push: { comments: { comment: comment, iduser: user, date: Date.now() } } }, { new: true })
+            .populate("users")
         res.json({ success: true, response: { newComment }, message: "Thanks for your comment" })
         }
         catch (error) {
