@@ -2,16 +2,15 @@ const Itineraries = require('../models/modelitineraries')
  
 const commentsControllers = {
     addComment: async (req, res) => {
-        const  {itineraryId} = req.body.comment 
+        const {itineraryId} = req.body.comment
         const comment = req.body.comment.comments.comment
-        const user = req.user.id
-        console.log(req.body); 
-        console.log(comment)
-        
+        const user = req.user 
+        // console.log(req.body); 
+        console.log(req.body) 
         try {
         const newComment = await Itineraries.findOneAndUpdate({ _id: itineraryId }, 
             { $push: { comments: { comment: comment, iduser: user, date: Date.now() } } }, { new: true })
-            comment.populate("users")
+            .populate("comments.iduser")
         res.json({ success: true, response: { newComment }, message: "Thanks for your comment" })
         }
         catch (error) {
@@ -24,6 +23,7 @@ const commentsControllers = {
         try {
             const newComment = await Itineraries.findOneAndUpdate({"comments._id":commentId}, 
             {$set: {"comments.$.comment": comment,"comments.$.date": Date.now() }}, {new: true})
+            .populate("comments.iduser")
             console.log(newComment)
             res.json({ success: true, response:{newComment}, message:"Your commentary has been changed" })
         }

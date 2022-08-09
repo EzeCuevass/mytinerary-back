@@ -7,6 +7,7 @@ const itinerariesControllers = {
         try {
             itineraries = await Itineraries.find()
             .populate("cities")
+            .populate("comments.iduser")
         } catch (err){
             error = err
         }
@@ -22,6 +23,7 @@ const itinerariesControllers = {
         let error = null
         try{
             itinerary = await Itineraries.findOne({_id:id})
+            .populate("comments.iduser")
         }catch (err){
             error = err
         }
@@ -62,6 +64,7 @@ const itinerariesControllers = {
         let error = null
         try{
             itinerarydb = await Itineraries.findOneAndUpdate({_id:id}, itinerary, {new:true})
+            .populate("comments.iduser")
         }catch (err){error=err}
         res.json({
             response: error ? "Error" : itinerarydb,
@@ -86,10 +89,13 @@ const itinerariesControllers = {
         let cityid = req.params.id
         let itineraries
         let error = null
+        console.log(cityid);
         try{
             itineraries = await Itineraries.find({ cities:cityid })
             .populate("cities")
             .populate("activities")
+            .populate("comments.iduser")
+
         }catch (err) { error = err } 
         res.json({
             response : error ? 'ERROR' : { itineraries },

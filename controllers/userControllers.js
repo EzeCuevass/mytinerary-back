@@ -7,7 +7,7 @@ const jwt = require("jsonwebtoken")
 const userControllers = {
     signUpUsers: async (req, res) => {
         let {fullname, email, password, country, photo, from} = req.body.userData
-        console.log(req.body.userData)
+        // console.log(req.body.userData)
         // const test = req.body.test
         try {
             const userExists = await User.findOne({ email })
@@ -88,7 +88,7 @@ const userControllers = {
                         }
                         await userExists.save()
                         const token = jwt.sign({...userData}, process.env.SECRET_KEY, {expiresIn: 60* 60*24*7})
-                        console.log(token);
+                        // console.log(token);
                         res.json({
                             success: true,
                             from: from,
@@ -104,9 +104,9 @@ const userControllers = {
                     }
                 } else {
                     let passmatch = userExists.password.filter(pass => bcryptjs.compareSync(password, pass))
-                    console.log(passmatch);
+                    // console.log(passmatch);
                     if (passmatch.length > 0) {
-                            console.log("jopa");
+                            // console.log("jopa");
                             const userData = {
                             id: userExists._id,
                             fullname: userExists.fullname,
@@ -116,7 +116,7 @@ const userControllers = {
                         }
                         await userExists.save()
                         const token = jwt.sign({...userData}, process.env.SECRET_KEY, {expiresIn: 60* 60*24*7})
-                        console.log(token);
+                        // console.log(token);
                         res.json({
                             success: true,
                             from: from,
@@ -139,7 +139,7 @@ const userControllers = {
     },verifyMail: async (req, res) => {
         const { string } = req.params
         const user = await User.findOne({ uniqueString: string })
-        console.log(user)
+        // console.log(user)
         if (user) {
             user.verification = true
             await user.save()
@@ -152,9 +152,9 @@ const userControllers = {
             })
         }
     },verifyToken: (req,res) => {
-        console.log("lol");
+        // console.log("lol");
         if(req.user){
-            console.log(req.user);
+            // console.log(req.user);
             res.json({success:true,
                         response:{id:req.user.id, fullname: req.user.fullname, email: req.user.email,from: "token", photo: req.user.photo},
                         message: "Welcome again "+req.user.fullname})
