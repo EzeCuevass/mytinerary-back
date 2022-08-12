@@ -3,7 +3,10 @@ const bcryptjs = require("bcryptjs")
 const crypto = require("crypto")
 const sendEmail = require("./sendEmail")
 const jwt = require("jsonwebtoken")
- 
+
+// let url = "https://mytinerary-cuevas.herokuapp.com"
+let url = "http://localhost:3000"
+
 const userControllers = {
     signUpUsers: async (req, res) => {
         let {fullname, email, password, country, photo, from} = req.body.userData
@@ -152,7 +155,7 @@ const userControllers = {
         if (user) {
             user.verification = true
             await user.save()
-            res.redirect("http://localhost:3000/")
+            res.redirect(url+"/signin")
         }
         else {
             res.json({
