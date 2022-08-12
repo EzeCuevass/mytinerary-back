@@ -2,8 +2,8 @@ const nodemailer = require('nodemailer')
 const { google } = require('googleapis')
 const OAuth2 = google.auth.OAuth2
 
-// let url = "https://mytinerary-cuevas.herokuapp.com"
-let url = "http://localhost:3000" 
+let url = "https://mytinerary-back-cuevas.herokuapp.com"
+// let url = "http://localhost:4000" 
 
 const sendEmail = async (email, uniqueString) => {
 
@@ -40,7 +40,7 @@ const sendEmail = async (email, uniqueString) => {
         to: email,
         subject: 'verify account',
         html: 
-        `<a href=${url}/verify/${uniqueString}>CLICK!</a>
+        `<a href=${url}/api/verify/${uniqueString}>CLICK!</a>
         <h3>to confirm!</h3>`
     }
 
