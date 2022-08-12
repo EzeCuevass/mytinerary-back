@@ -40,7 +40,7 @@ const sendEmail = async (email, uniqueString) => {
         to: email,
         subject: 'verify account',
         html: 
-        `<a href=${url}/api/verify/${uniqueString}>CLICK!</a>
+        `<a href=${url}/verify/${uniqueString}>CLICK!</a>
         <h3>to confirm!</h3>`
     }
 
