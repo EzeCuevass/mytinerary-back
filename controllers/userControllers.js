@@ -72,7 +72,7 @@ const userControllers = {
             const userExists = await User.findOne({email})
             // console.log(userExists);
             // const indexpass = userExists.from.indexOf(from)
-            if(!userExists || !userExists.verification){
+            if(!userExists){
                 res.json({success: false, message: "Your user has not signed up"})
             } else {
                 if (from !== "form-Signin" /* || userExists.verification */ ) {
@@ -89,12 +89,21 @@ const userControllers = {
                         await userExists.save()
                         const token = jwt.sign({...userData}, process.env.SECRET_KEY, {expiresIn: 60* 60*24*7})
                         // console.log(token);
+                        if (userExists.verification){
                         res.json({
                             success: true,
                             from: from,
                             response: { token, userData },
-                            message: "Welcome again 1" + userData.fullname,
+                            message: "Welcome again" + userData.fullname,
                         })
+                    } else{
+                        res.json({
+                            success: true,
+                            from: from,
+                            response: { token, userData },
+                            message: "Welcome again" + userData.fullname + ", remember to confirm your account"
+                        })
+                    }
                     } else {
                         res.json({
                             success: false, 
@@ -121,7 +130,7 @@ const userControllers = {
                             success: true,
                             from: from,
                             response: { token, userData },
-                            message: "Welcome again 2" + userData.fullname, 
+                            message: "Welcome again" + userData.fullname, 
                         })
                     } else {
                         res.json({
