@@ -4,8 +4,8 @@ const crypto = require("crypto")
 const sendEmail = require("./sendEmail")
 const jwt = require("jsonwebtoken")
 
-// let url = "https://mytinerary-cuevas.herokuapp.com"
-let url = "http://localhost:3000"
+let url = "https://mytinerary-cuevas.herokuapp.com"
+// let url = "http://localhost:3000"
 
 const userControllers = {
     signUpUsers: async (req, res) => {
