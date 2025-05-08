@@ -2,7 +2,7 @@ const nodemailer = require('nodemailer')
 const { google } = require('googleapis')
 const OAuth2 = google.auth.OAuth2
 
-let url = "https://mytinerary-back-cuevas.herokuapp.com"
+let url = "https://mytinerary-back-cuevas.netlify.app"
 // let url = "http://localhost:4000" 
 
 const sendEmail = async (email, uniqueString) => {
