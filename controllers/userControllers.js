@@ -4,7 +4,7 @@ const crypto = require("crypto")
 const sendEmail = require("./sendEmail")
 const jwt = require("jsonwebtoken")
 
-let url = "https://mytinerary-cuevas.herokuapp.com"
+let url = "https://mytinerary-cuevas.netlify.app"
 // let url = "http://localhost:3000"
 
 const userControllers = {
