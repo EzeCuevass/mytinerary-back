@@ -2,7 +2,7 @@ const nodemailer = require('nodemailer')
 const { google } = require('googleapis')
 const OAuth2 = google.auth.OAuth2
 
-let url = "https://mytinerary-back-cuevas.netlify.app"
+let url = "https://mytinerary-back-production-abd3.up.railway.app/"
 // let url = "http://localhost:4000" 
 
 const sendEmail = async (email, uniqueString) => {
